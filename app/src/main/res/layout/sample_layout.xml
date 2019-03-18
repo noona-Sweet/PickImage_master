@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="207dp"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="@string/tip"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <ImageView
+                    android:id="@+id/result_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/image_selector"
+                    android:minWidth="200dp"
+                    android:minHeight="150dp"
+                    android:padding="5dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@mipmap/default_image" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="383dp"
+            android:layout_height="395dp">
+
+
+            <EditText
+                android:id="@+id/usernamee"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_above="@+id/phonee"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="105dp"
+                android:layout_marginBottom="44dp"
+                android:drawableLeft="@drawable/userrname"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/user_name"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary" />
+
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/phonee"
+                android:layout_alignLeft="@+id/usernamee"
+                android:layout_marginLeft="0dp"
+                android:layout_marginBottom="-4dp"
+                android:drawableLeft="@drawable/email"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary" />
+
+
+            <EditText
+                android:id="@+id/phonee"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@+id/pass"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginBottom="0dp"
+                android:drawableLeft="@drawable/phone"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/phone"
+                android:inputType="number"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/pass"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@+id/cpass"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginBottom="0dp"
+                android:drawableLeft="@drawable/password"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="number"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/cpass"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginBottom="86dp"
+                android:drawableLeft="@drawable/password"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="number"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/bttnedite"
+                android:layout_width="356dp"
+                android:layout_height="37dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="9dp"
+                android:layout_marginBottom="21dp"
+                android:background="@drawable/orgbtn"
+                android:text="@string/save"
+                android:textColor="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/Id"
+                android:layout_width="147dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="18dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="218dp"
+                android:layout_marginRight="218dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="text"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/prefs_holder"
+            android:layout_width="379dp"
+            android:layout_height="33dp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</ScrollView>

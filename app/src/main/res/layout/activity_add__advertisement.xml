@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/application"
+    tools:context=".act.Add_Advertisement">
+
+
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="403dp"
+        android:layout_height="79dp"
+        android:layout_alignParentTop="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="8dp" />
+
+
+    <RelativeLayout
+        android:id="@+id/rt4"
+        android:layout_width="395dp"
+        android:layout_height="721dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <TextView
+            android:id="@+id/naa"
+            android:layout_width="wrap_content"
+            android:layout_height="486dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginBottom="18dp"
+            android:background="#F5F5F5"
+            android:text="@string/new_advertisement"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#D6388E"
+            android:textDirection="firstStrong"
+            android:textSize="24sp"
+            android:typeface="serif"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/tpt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="354dp"
+            android:layout_marginRight="28dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="Title"
+            android:inputType="textPersonName"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textColorHint="@color/design_default_color_primary"
+            android:textColorLink="@color/design_default_color_primary"
+            android:textSize="18sp"
+            android:typeface="normal"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/descc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="275dp"
+            android:autofillHints=""
+            android:cursorVisible="true"
+            android:hint="Description"
+            android:inputType="text"
+            android:selectAllOnFocus="false"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/phoone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="223dp"
+            android:ems="10"
+            android:hint="Phone Num"
+            android:inputType="number"
+            android:textColor="@color/design_default_color_primary"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/locate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="642dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/greenbtn"
+            android:text="@string/locate"
+            android:textColor="@color/primaryText"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="596dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginBottom="79dp"
+            android:background="@drawable/bluebtn"
+            android:text="@string/submt"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="359dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="17dp"
+            android:layout_marginBottom="166dp"
+            android:dropDownWidth="match_parent"
+            android:entries="@array/choose"
+            android:textAlignment="center"
+            android:textDirection="inherit" />
+
+        <ImageView
+            android:id="@+id/uploadimg"
+            android:layout_width="185dp"
+            android:layout_height="118dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="249dp"
+            android:layout_marginEnd="111dp"
+            android:layout_marginRight="111dp"
+            app:srcCompat="@mipmap/bunyanlogo" />
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

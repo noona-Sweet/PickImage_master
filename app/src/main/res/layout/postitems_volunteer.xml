@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <RelativeLayout
+        android:id="@+id/Realtiive"
+        android:layout_width="wrap_content"
+        android:layout_height="179dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/background_light"
+        android:gravity="center"
+        android:visibility="visible"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="12dp">
+
+        <ImageView
+            android:id="@+id/iimg2"
+            android:layout_width="129dp"
+            android:layout_height="74dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@drawable/picc"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="205dp" />
+
+        <TextView
+            android:id="@+id/vv1"
+            android:layout_width="225dp"
+            android:layout_height="42dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="46dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+            android:textColor="#D6388E"
+            android:textSize="18sp"
+            android:visibility="visible"
+            tools:text="We Need Volunteers!"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="162dp" />
+
+
+        <ImageView
+            android:id="@+id/vieweas"
+            android:layout_width="wrap_content"
+            android:layout_height="69dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="231dp"
+            android:layout_marginTop="47dp"
+            android:layout_marginRight="0dp"
+            app:srcCompat="@drawable/viewbtn"
+            android:onClick="Viewsh"/>
+
+        <ImageView
+            android:id="@+id/accept"
+            android:layout_width="37dp"
+            android:layout_height="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="136dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/recomend"
+            android:layout_toRightOf="@+id/recomend"
+            app:srcCompat="@drawable/accept_icon"
+            android:onClick="Acceptableh"/>
+
+        <ImageView
+            android:id="@+id/recomend"
+            android:layout_width="55dp"
+            android:layout_height="36dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="103dp"
+            android:layout_marginLeft="103dp"
+            android:layout_marginBottom="11dp"
+            app:srcCompat="@drawable/recomm_icon"
+            android:onClick="Recomendedh"/>
+
+        <ImageView
+            android:id="@+id/participate"
+            android:layout_width="45dp"
+            android:layout_height="34dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginBottom="9dp"
+            app:srcCompat="@drawable/part_icon"
+            android:onClick="participateh"/>
+
+        <ImageView
+            android:id="@+id/vieew"
+            android:layout_width="45dp"
+            android:layout_height="39dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginBottom="4dp"
+            app:srcCompat="@drawable/view_icon"
+            android:onClick="Viewsh"/>
+
+    </RelativeLayout>
+</RelativeLayout>

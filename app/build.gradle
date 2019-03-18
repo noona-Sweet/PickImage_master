@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'https://jitpack.io'
+        }
+    }
+}
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId 'com.vansuita.pickimage.sample'
+        minSdkVersion 14
+        targetSdkVersion 28
+        versionCode 4
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    implementation project(':library')
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'com.jrummyapps:colorpicker:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.github.jrvansuita:PickImage:2.2.4'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.android.support:support-core-utils:28.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.viewpager:viewpager:1.0.0'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    //to send and display messages.
+    implementation files('libs/activation.jar')
+    implementation files('libs/additional.jar')
+    implementation files('libs/mail.jar')
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+}

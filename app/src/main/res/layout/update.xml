@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:gravity="center"
+    android:background="@color/icons">
+
+
+    <RelativeLayout
+        android:layout_width="295dp"
+        android:layout_height="497dp">
+
+        <ImageView
+            android:id="@+id/imageup"
+            android:layout_width="89dp"
+            android:layout_height="93dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="101dp"
+            android:layout_marginTop="84dp"
+            android:background="@color/colorPrimaryDark"
+            android:src="@drawable/addphoto" />
+
+        <EditText
+            android:id="@+id/updatet"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageup"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="61dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="43dp"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:hint="@string/title"
+            android:inputType="textPersonName"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textColorHint="@color/design_default_color_primary_dark" />
+
+        <EditText
+            android:id="@+id/updated"
+            android:layout_width="287dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/updatet"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="58dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="46dp"
+            android:ems="10"
+            android:hint="@string/description"
+            android:inputType="textPersonName"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textColorHint="@color/design_default_color_primary_dark" />
+
+        <EditText
+            android:id="@+id/updatep"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/updated"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="54dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginRight="49dp"
+            android:ems="10"
+            android:hint="@string/phone_number"
+            android:inputType="text"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textColorHint="@color/design_default_color_primary_dark" />
+
+        <Button
+            android:id="@+id/updates"
+            android:layout_width="191dp"
+            android:layout_height="38dp"
+            android:layout_below="@id/updatep"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="58dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginRight="46dp"
+            android:background="@drawable/orgbtn"
+            android:text="@string/update"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

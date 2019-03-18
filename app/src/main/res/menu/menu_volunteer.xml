@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/homee"
+        android:checkable="true"
+        android:enabled="true"
+        android:icon="@drawable/homeicon"
+        android:padding="450dp"
+        android:title="@string/mb2"
+        android:visible="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/msg"
+        android:checkable="true"
+        android:icon="@drawable/message"
+        android:padding="100dp"
+        android:title="@string/mb3"
+        android:visible="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/uuserr"
+        android:checkable="true"
+        android:icon="@drawable/user"
+        android:title="@string/mb1"
+        android:visible="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/options"
+        android:icon="@drawable/arrow_24px"
+        android:title="Item"
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/edits"
+                android:title="Edit Profile" />
+            <item
+                android:id="@+id/changep"
+                android:title="Change Password"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/hs"
+                android:title="@string/help_support" />
+            <item
+                android:id="@+id/lo"
+                android:title="Logout"
+                app:showAsAction="ifRoom" />
+
+        </menu>
+    </item>
+</menu>
