@@ -25,12 +25,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
    }
 
 //insert data
-    public void insertData(String title, String description, String phone, byte[]image) {
+public void insertData(String title, String description, String phone, byte[] image, int category) {
 
         SQLiteDatabase database = this.getWritableDatabase();
         //query to insert data in db table
 
-        String sql = "INSERT INTO RECORD VALUES(NULL,?,?,?,?)";
+    String sql = "INSERT INTO RECORD VALUES(NULL,?,?,?,?,?)";
         //record is table name and created in main activity
 
         SQLiteStatement statement = database.compileStatement( sql );
@@ -40,6 +40,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         statement.bindString( 2, description );
         statement.bindString( 3, phone );
         statement.bindBlob( 4, image );
+    statement.bindString(5, String.valueOf(category));
         statement.executeInsert();
 
     }

@@ -1,14 +1,5 @@
 package com.vansuita.pickimage.sample.act;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
@@ -41,6 +32,14 @@ import com.vansuita.pickimage.sample.R;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+
 public class Health_Volunteering extends AppCompatActivity {
 
     private int mcount = 0;
@@ -53,87 +52,16 @@ public class Health_Volunteering extends AppCompatActivity {
     TextView tv11;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_health__volunteering );
+    public static byte[] imageViewToByte(ImageView image) {
 
-        Toolbar toool = (Toolbar) findViewById( R.id.toolbar );
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle( "Advertisement List" );
-
-        llistview = (ListView) findViewById( R.id.listviewv);
-        vieww= (ImageView)findViewById( R.id.imgiicon );
-        count = (TextView)findViewById( R.id.counts );
-       lists = new ArrayList<AdvertisV>();
-       adapter = new HealthAdapter( this, R.layout.row_vol, lists);
-        llistview.setAdapter( adapter );
-
-        // get all data from sql
-
-        mSqlitehelper = new  SQLiteHelper(this,"RECORDDB.sqlite",null,1);
-        mSqlitehelper.querydata( "CREATE TABLE IF NOT EXISTS RECORD(id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR," +
-                " description VARCHAR, phone VARCHAR, image BLOB)" );
-
-        Cursor cursor = Health_Volunteering. mSqlitehelper.getData( " SELECT * FROM RECORD" );
-        lists.clear();
-        while (cursor.moveToNext()) {
-            int id = cursor.getInt( 0 );
-            String ti = cursor.getString( 1 );
-            String de = cursor.getString( 2 );
-            String ph = cursor.getString( 3 );
-            byte[] im = cursor.getBlob( 4 );
-            //adds to list
-            lists.add( new AdvertisV( id, ti, de, ph, im ) );
-        }
-        adapter.notifyDataSetChanged();
-        if (lists.size() == 0) {
-            // if the list is empty and no records found in the table
-            Toast.makeText( this, "No Record Found...", Toast.LENGTH_SHORT ).show();
-        }
+        Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
+        Drawable drawable = image.getDrawable();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] bytesArray = stream.toByteArray();
+        return bytesArray;
 
 
-        llistview.setOnItemLongClickListener( new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long l) {
-
-                final CharSequence[] items = {"Update", "Delete"};
-
-                AlertDialog.Builder dialog = new AlertDialog.Builder( Health_Volunteering.this );
-
-                dialog.setTitle( " Choose an action" );
-                dialog.setItems( items, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (i == 0) {
-                            //update
-                            Cursor c = Add_Advertisement.mSqlitehelper.getData( "SELECT id FROM RECORD");
-                            ArrayList<Integer> attID = new ArrayList<Integer>();
-                            while (c.moveToNext()) {
-                                attID.add( c.getInt( 0 ) );
-                            }
-
-                            //show dialog update
-                            showupdatedialog( Health_Volunteering.this,attID.get(position) );
-                        }
-                        if (i== 1) {
-                            //delete
-
-                            Cursor c = Health_Volunteering.mSqlitehelper.getData( " SELECT id FROM RECORD");
-                            ArrayList<Integer> attID = new ArrayList<Integer>();
-                            while (c.moveToNext()) {
-                                attID.add( c.getInt( 0 ));
-                            }
-                            showdeletdialog(attID.get(position));
-                        }
-                    }
-                } );
-                dialog.show();
-                return true;
-            }
-
-        });
     }
 
     public void showupdatedialog(Activity activity, final int position) {
@@ -255,16 +183,87 @@ public class Health_Volunteering extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    public static byte[] imageViewToByte(ImageView image) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_health__volunteering);
 
-        Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
-        Drawable drawable = ((ImageView) image).getDrawable();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress( Bitmap.CompressFormat.PNG, 100, stream );
-        byte[] bytesArray = stream.toByteArray();
-        return bytesArray;
+        Toolbar toool = findViewById(R.id.toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Advertisement List");
+
+        llistview = findViewById(R.id.listviewv);
+        vieww = findViewById(R.id.imgiicon);
+        count = findViewById(R.id.counts);
+        lists = new ArrayList<AdvertisV>();
+        adapter = new HealthAdapter(this, R.layout.row_vol, lists);
+        llistview.setAdapter(adapter);
+
+        // get all data from sql
+
+        mSqlitehelper = new SQLiteHelper(this, "RECORDDB.sqlite", null, 1);
+        mSqlitehelper.querydata("CREATE TABLE IF NOT EXISTS RECORD(id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR," +
+                " description VARCHAR, phone VARCHAR, image BLOB, category INTEGER)");
+
+        Cursor cursor = Health_Volunteering.mSqlitehelper.getData(" SELECT * FROM RECORD WHERE category = 1");
+        lists.clear();
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String ti = cursor.getString(1);
+            String de = cursor.getString(2);
+            String ph = cursor.getString(3);
+            byte[] im = cursor.getBlob(4);
+            //adds to list
+            lists.add(new AdvertisV(id, ti, de, ph, im));
+        }
+        adapter.notifyDataSetChanged();
+        if (lists.size() == 0) {
+            // if the list is empty and no records found in the table
+            Toast.makeText(this, "No Record Found...", Toast.LENGTH_SHORT).show();
+        }
 
 
+        llistview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long l) {
+
+                final CharSequence[] items = {"Update", "Delete"};
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(Health_Volunteering.this);
+
+                dialog.setTitle(" Choose an action");
+                dialog.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (i == 0) {
+                            //update
+                            Cursor c = Add_Advertisement.mSqlitehelper.getData("SELECT id FROM RECORD");
+                            ArrayList<Integer> attID = new ArrayList<Integer>();
+                            while (c.moveToNext()) {
+                                attID.add(c.getInt(0));
+                            }
+
+                            //show dialog update
+                            showupdatedialog(Health_Volunteering.this, attID.get(position));
+                        }
+                        if (i == 1) {
+                            //delete
+
+                            Cursor c = Health_Volunteering.mSqlitehelper.getData(" SELECT id FROM RECORD");
+                            ArrayList<Integer> attID = new ArrayList<Integer>();
+                            while (c.moveToNext()) {
+                                attID.add(c.getInt(0));
+                            }
+                            showdeletdialog(attID.get(position));
+                        }
+                    }
+                });
+                dialog.show();
+                return true;
+            }
+
+        });
     }
 
     @Override

@@ -1,11 +1,5 @@
 package com.vansuita.pickimage.sample.act;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -28,7 +22,12 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import com.vansuita.pickimage.sample.R;
 
 import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import static com.vansuita.pickimage.sample.R.layout.activity_add__advertisement;
 
@@ -50,7 +49,7 @@ public class Add_Advertisement extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( activity_add__advertisement );
 
-        toool = (Toolbar) findViewById(R.id.toolbar);
+        toool = findViewById(R.id.toolbar);
 
 
         ActionBar actionBar = getSupportActionBar();
@@ -62,12 +61,12 @@ public class Add_Advertisement extends AppCompatActivity {
 
 //create table in database
         mSqlitehelper.querydata( "CREATE TABLE IF NOT EXISTS RECORD(id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR," +
-                " description VARCHAR, phone VARCHAR, image BLOB)" );
-        title = (EditText) findViewById(R.id.tpt);
-        description = (EditText) findViewById(R.id.descc);
-        phone = (EditText) findViewById(R.id.phoone);
-        images= (ImageView) findViewById(R.id.uploadimg);
-        spinnerr = (Spinner) findViewById(R.id.spinner);
+                " description VARCHAR, phone VARCHAR, image BLOB, category INTEGER)");
+        title = findViewById(R.id.tpt);
+        description = findViewById(R.id.descc);
+        phone = findViewById(R.id.phoone);
+        images = findViewById(R.id.uploadimg);
+        spinnerr = findViewById(R.id.spinner);
 
         images.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -79,7 +78,7 @@ public class Add_Advertisement extends AppCompatActivity {
 
             }
         } );
-        locate = (Button) findViewById(R.id.locate);
+        locate = findViewById(R.id.locate);
         locate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +91,7 @@ public class Add_Advertisement extends AppCompatActivity {
 
         spinnerr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
-                subb = (Button) findViewById( R.id.sub );
+                subb = findViewById(R.id.sub);
                 subb.setOnClickListener( new View.OnClickListener() {
                     public void onClick(View v) {
 
@@ -103,7 +102,7 @@ public class Add_Advertisement extends AppCompatActivity {
                         if (position == 0) {
 
                             Intent oones = new Intent( Add_Advertisement.this, Organization_advertisement.class );
-                            mSqlitehelper.insertData( title.getText().toString().trim(), description.getText().toString().trim(), phone.getText().toString().trim(), imageViewToByte( images ) );
+                            mSqlitehelper.insertData(title.getText().toString().trim(), description.getText().toString().trim(), phone.getText().toString().trim(), imageViewToByte(images), position);
                             Toast.makeText( Add_Advertisement.this, "Added Successfully", Toast.LENGTH_SHORT ).show();
                             title.setText( " " );
                             description.setText( " " );
@@ -116,7 +115,7 @@ public class Add_Advertisement extends AppCompatActivity {
                             if (position == 1) {
 
                                 Intent two = new Intent( Add_Advertisement.this, Health_Volunteering.class );
-                                mSqlitehelper.insertData( title.getText().toString().trim(), description.getText().toString().trim(), phone.getText().toString().trim(), imageViewToByte( images ) );
+                                mSqlitehelper.insertData(title.getText().toString().trim(), description.getText().toString().trim(), phone.getText().toString().trim(), imageViewToByte(images), position);
                                 Toast.makeText( Add_Advertisement.this, "Added Successfully", Toast.LENGTH_SHORT ).show();
                                 title.setText( " " );
                                 description.setText( " " );
@@ -130,7 +129,7 @@ public class Add_Advertisement extends AppCompatActivity {
                                 if (position == 2) {
 
                                     Intent two = new Intent( Add_Advertisement.this, Environmental_Volunteering.class );
-                                    mSqlitehelper.insertData( title.getText().toString().trim(), description.getText().toString().trim(), phone.getText().toString().trim(), imageViewToByte( images ) );
+                                    mSqlitehelper.insertData(title.getText().toString().trim(), description.getText().toString().trim(), phone.getText().toString().trim(), imageViewToByte(images), position);
                                     Toast.makeText( Add_Advertisement.this, "Added Successfully", Toast.LENGTH_SHORT ).show();
                                     title.setText( " " );
                                     description.setText( " " );
@@ -145,7 +144,7 @@ public class Add_Advertisement extends AppCompatActivity {
 
                                         Intent it = new Intent( Add_Advertisement.this, Educational_Volunteering.class );
 
-                                        mSqlitehelper.insertData( title.getText().toString().trim(), description.getText().toString().trim(), phone.getText().toString().trim(), imageViewToByte( images ) );
+                                        mSqlitehelper.insertData(title.getText().toString().trim(), description.getText().toString().trim(), phone.getText().toString().trim(), imageViewToByte(images), position);
                                         Toast.makeText( Add_Advertisement.this, "Added Successfully", Toast.LENGTH_SHORT ).show();
                                         title.setText( " " );
                                         description.setText( " " );

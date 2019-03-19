@@ -1,12 +1,5 @@
 package com.vansuita.pickimage.sample.act;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
@@ -38,6 +31,13 @@ import com.vansuita.pickimage.sample.R;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 public class Organization_advertisement extends AppCompatActivity  {
     ListView llistview;
     ArrayList<Advertis> mlist;
@@ -49,66 +49,14 @@ public class Organization_advertisement extends AppCompatActivity  {
     public static SQLiteHelper mSqlitehelper;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_organization_advertisement );
-        db = new Database_Helper(this);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Advertisement List");
+    public static byte[] imageViewToByte(ImageView image) {
 
-        llistview = (ListView) findViewById( R.id.listviewo);
-        count = (TextView)findViewById( R.id.counts );
-        icount = (ImageView)findViewById( R.id.iconview );
-        d1 = (ImageView)findViewById(R.id.dells);
-        mlist = new ArrayList<>();
-        madapter = new OrganizationAdapter( this, R.layout.row, mlist );
-        llistview.setAdapter( madapter );
-
-        viewData();
-
-        // get all data from sql
-        mSqlitehelper = new  SQLiteHelper(this,"RECORDDB.sqlite",null,1);
-        mSqlitehelper.querydata( "CREATE TABLE IF NOT EXISTS RECORD(id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR," +
-                " description VARCHAR, phone VARCHAR, image BLOB)" );
-
-        Cursor cursor = Add_Advertisement. mSqlitehelper.getData( " SELECT * FROM RECORD"  );
-        mlist.clear();
-        while (cursor.moveToNext()) {
-            int id = cursor.getInt( 0 );
-            String ti = cursor.getString( 1 );
-            String de = cursor.getString( 2 );
-            String ph = cursor.getString( 3 );
-            byte[] im = cursor.getBlob( 4 );
-            //adds to list
-            mlist.add( new Advertis( id, ti, de, ph, im ) );
-        }
-        madapter.notifyDataSetChanged();
-        if (mlist.size() == 0) {
-            // if the list is empty and no records found in the table
-            Toast.makeText( this, "No Record Found...", Toast.LENGTH_SHORT ).show();
-        }
-
-
-
-        llistview.setOnItemLongClickListener( new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-                SparseBooleanArray checker = llistview.getCheckedItemPositions();
-                int count = llistview.getCount();
-
-                for (int items = count - 1; items >= 0; items--) {
-                    if (checker.get(items)) {
-
-                    }
-                }
-                checker.clear();
-                madapter.notifyDataSetChanged();
-                return false;
-            }
-
-        });
+        Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
+        Drawable drawable = image.getDrawable();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] bytesArray = stream.toByteArray();
+        return bytesArray;
 
 
     }
@@ -255,14 +203,65 @@ public class Organization_advertisement extends AppCompatActivity  {
         madapter.notifyDataSetChanged();
     }
 
-    public static byte[] imageViewToByte(ImageView image) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_organization_advertisement);
+        db = new Database_Helper(this);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Advertisement List");
 
-        Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
-        Drawable drawable = ((ImageView) image).getDrawable();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress( Bitmap.CompressFormat.PNG, 100, stream );
-        byte[] bytesArray = stream.toByteArray();
-        return bytesArray;
+        llistview = findViewById(R.id.listviewo);
+        count = findViewById(R.id.counts);
+        icount = findViewById(R.id.iconview);
+        d1 = findViewById(R.id.dells);
+        mlist = new ArrayList<>();
+        madapter = new OrganizationAdapter(this, R.layout.row, mlist);
+        llistview.setAdapter(madapter);
+
+        viewData();
+
+        // get all data from sql
+        mSqlitehelper = new SQLiteHelper(this, "RECORDDB.sqlite", null, 1);
+        mSqlitehelper.querydata("CREATE TABLE IF NOT EXISTS RECORD(id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR," +
+                " description VARCHAR, phone VARCHAR, image BLOB, category INTEGER)");
+
+        Cursor cursor = mSqlitehelper.getData(" SELECT * FROM RECORD");
+        mlist.clear();
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String ti = cursor.getString(1);
+            String de = cursor.getString(2);
+            String ph = cursor.getString(3);
+            byte[] im = cursor.getBlob(4);
+            //adds to list
+            mlist.add(new Advertis(id, ti, de, ph, im));
+        }
+        madapter.notifyDataSetChanged();
+        if (mlist.size() == 0) {
+            // if the list is empty and no records found in the table
+            Toast.makeText(this, "No Record Found...", Toast.LENGTH_SHORT).show();
+        }
+
+
+        llistview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                SparseBooleanArray checker = llistview.getCheckedItemPositions();
+                int count = llistview.getCount();
+
+                for (int items = count - 1; items >= 0; items--) {
+                    if (checker.get(items)) {
+
+                    }
+                }
+                checker.clear();
+                madapter.notifyDataSetChanged();
+                return false;
+            }
+
+        });
 
 
     }
