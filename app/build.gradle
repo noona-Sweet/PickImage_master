@@ -47,4 +47,5 @@ dependencies {
     implementation files('libs/additional.jar')
     implementation files('libs/mail.jar')
     implementation 'com.google.android.gms:play-services-ads:15.0.1'
+
 }

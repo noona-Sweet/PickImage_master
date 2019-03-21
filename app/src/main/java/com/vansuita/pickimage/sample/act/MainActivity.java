@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.vansuita.pickimage.sample.R;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String EXTRA_TEXT = "com.vansuita.pickimage.sample.act.EXTRA_TEXT";
 
 
     Database_Helper helper = new Database_Helper(this);
@@ -62,11 +63,13 @@ public class MainActivity extends AppCompatActivity {
                         mp.show();
                         if (chk1.isChecked()) {
                             Intent c1 = new Intent(MainActivity.this, Home_Page.class);
+                            c1.putExtra(EXTRA_TEXT,"Welcome   " +  uname);
                             startActivity(c1);
                         } else {
                             Toast.makeText(MainActivity.this, "Please Choose Option", Toast.LENGTH_SHORT).show();
                             if (chk2.isChecked()) {
                                 Intent c2 = new Intent(MainActivity.this, Voulnteers.class);
+                                c2.putExtra(EXTRA_TEXT,"Welcome   " +  uname);
                                 startActivity(c2);
                             } else {
                                 Toast.makeText(MainActivity.this, "Please Choose Option", Toast.LENGTH_SHORT).show();
@@ -78,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     public void Loginn(View view) {

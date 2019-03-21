@@ -8,11 +8,11 @@
     <color name="secondaryText">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
-    <color name="backgroundd">#E0E4E5</color>
+    <color name="backgroundd">#D4D9FD</color>
     <color name="yellow">#FDF2FF</color>
 
 
-    <color name="bt_white">#ffffff</color>
+    <color name="bt_white">#FFFFFF</color>
     <color name="bt_black">#001129</color>
     <color name="bt_blue">#009bde</color>
     <color name="bt_light_gray">#6d6d6d</color>

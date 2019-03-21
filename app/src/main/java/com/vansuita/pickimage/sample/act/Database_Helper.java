@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
+import android.widget.TextView;
 
 
 public class Database_Helper extends SQLiteOpenHelper {
@@ -19,6 +21,8 @@ public class Database_Helper extends SQLiteOpenHelper {
     private static final String COLUMN_PHONE = "phone";
     private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_CONFIRM = "confirm";
+
+
 
 
     private static final String databasename = "updates.db";
@@ -92,31 +96,35 @@ public class Database_Helper extends SQLiteOpenHelper {
 
     }
 
-    public void updates(String id, String Username, String Password, String Email, String Phone, String Conf) {
+    public Cursor updates(int id, String Username, String Emailm, String Phone, String Password, String Conf, byte[] image) {
 
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "select * from Contacts";
-        Cursor cc = db.rawQuery( query, null );
-        int count = cc.getCount();
+        SQLiteDatabase database = this.getWritableDatabase();
+        String sql = "UPDATE Contacts SET Username =?, Emailm=?, phone=?,Password=?, Conf=?,image = ? WHERE id=?";
 
-        ContentValues u = new ContentValues();
-        u.put( COLUMN_ID, count );
-        u.put( "uname", Username );
-        u.put( "email", Email );
-        u.put( "phone", Phone );
-        u.put( "password", Password );
-        u.put( "confirm", Conf );
-        db.update( TABLE_NAME, u, " id = ?", new String[]{id} );
+        SQLiteStatement statement = database.compileStatement( sql );
+
+        statement.bindString( 1, Username );
+        statement.bindString( 2, Emailm );
+        statement.bindString( 3, Phone );
+        statement.bindString( 4, Password );
+        statement.bindString( 5, Conf );
+        statement.bindBlob( 6, image);
+        statement.bindDouble( 7, (double)id );
+
+        statement.execute();
+        database.close();
+        return null;
     }
 
-    public Cursor getAllrecords() {
+    public void  getAllrecords(TextView textView) {
 
 
-        SQLiteDatabase db = this.getWritableDatabase();
+       Cursor cursor = this.getReadableDatabase().rawQuery( " select * from Contacts ", null );
+       textView.setText(" ");
+       while (cursor.moveToNext()){
 
-        Cursor res = db.rawQuery( " select * from Contacts ", null );
-        return res;
-
+           textView.append(cursor.getString(1) + cursor.getString(2));
+    }
     }
 
 

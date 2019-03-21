@@ -13,12 +13,20 @@ import android.widget.Toast;
 
 import com.vansuita.pickimage.sample.R;
 
+import org.w3c.dom.Text;
+
 public class Home_Page extends AppCompatActivity {
+    TextView tvv1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_home__page );
+
+        Intent intent = getIntent();
+        tvv1 = (TextView)findViewById(R.id.welcomeorg);
+        String tv11 = intent.getStringExtra(MainActivity.   EXTRA_TEXT);
+        tvv1.setText(tv11);
 
 
         View oa = (View) findViewById(R.id.vi1);

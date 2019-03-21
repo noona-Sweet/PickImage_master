@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.vansuita.pickimage.sample.R;
 
 public class Voulnteers extends AppCompatActivity {
+    TextView welv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,11 @@ public class Voulnteers extends AppCompatActivity {
         setContentView( R.layout.activity_voulnteers );
 
         Toolbar toool = (Toolbar) findViewById(R.id.toolbar);
+
+        Intent intent = getIntent();
+        welv = (TextView)findViewById(R.id.welcomev);
+        String tv12 = intent.getStringExtra(MainActivity. EXTRA_TEXT);
+        welv.setText(tv12);
 
         View ob = (View) findViewById(R.id.vi2);
         ob.setOnClickListener(new View.OnClickListener() {

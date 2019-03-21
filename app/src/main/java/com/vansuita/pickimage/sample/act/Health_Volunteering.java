@@ -359,5 +359,9 @@ public class Health_Volunteering extends AppCompatActivity {
             }
             return true;
         }
+    public void Viewing(View view) {
 
+        Intent intent = new Intent(  Health_Volunteering.this,Views.class);
+        startActivity( intent );
+    }
 }

@@ -1,7 +1,6 @@
 package com.vansuita.pickimage.sample.act;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -13,14 +12,9 @@ import android.widget.TextView;
 
 import com.vansuita.pickimage.sample.R;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-import androidx.recyclerview.widget.RecyclerView;
-
-public class AdapterEnviromental extends BaseAdapter {
+public class AdapterEducational extends BaseAdapter {
 
 
     private Context context;
@@ -28,7 +22,7 @@ public class AdapterEnviromental extends BaseAdapter {
     private ArrayList<Advertis> advertislist;
 
 
-    public AdapterEnviromental(Context context, int layout, ArrayList<Advertis> advertislist) {
+    public AdapterEducational(Context context, int layout, ArrayList<Advertis> advertislist) {
         this.context = context;
         this.layout = layout;
         this.advertislist = advertislist;
@@ -59,19 +53,19 @@ public class AdapterEnviromental extends BaseAdapter {
 
         View row = view;
 
-        AdapterEnviromental.ViewHolder holder = new AdapterEnviromental.ViewHolder();
+        AdapterEducational.ViewHolder holder = new AdapterEducational.ViewHolder();
 
         if (row == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = inflater.inflate(R.layout.row_envi, parent, false);
-            holder.titles = row.findViewById(R.id.titleen2);
-            holder.descriptions = row.findViewById(R.id.descen2);
-            holder.phones = row.findViewById(R.id.phonen2);
-            holder.image1 = row.findViewById(R.id.imgenvi);
-            holder.shows = row.findViewById(R.id.viewenvi);
+            row = inflater.inflate(R.layout.row_edu, parent, false);
+            holder.titles = row.findViewById(R.id.titledu2);
+            holder.descriptions = row.findViewById(R.id.desceu2);
+            holder.phones = row.findViewById(R.id.phoneu2);
+            holder.image1 = row.findViewById(R.id.imgeedu);
+            holder.shows = row.findViewById(R.id.viewedu);
             row.setTag(holder);
         } else {
-            holder = (AdapterEnviromental.ViewHolder) row.getTag();
+            holder = (AdapterEducational.ViewHolder) row.getTag();
         }
         Advertis model = advertislist.get(i);
 
@@ -85,3 +79,4 @@ public class AdapterEnviromental extends BaseAdapter {
         return row;
     }
 }
+

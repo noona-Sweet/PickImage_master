@@ -29,7 +29,6 @@ public class Organizations extends AppCompatActivity {
 
         Toolbar toool = (Toolbar) findViewById( R.id.toolbar );
 
-
         rrecomend = (ImageView) findViewById( R.id.recomend );
         viiew = (ImageView) findViewById( R.id.vieew );
         paart = (ImageView) findViewById( R.id.participate );

@@ -23,6 +23,8 @@ public class Advertis {
 
     }
 
+
+
     public int getId() {
         return id;
     }

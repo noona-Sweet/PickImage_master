@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/application"
+    android:background="@drawable/bg1"
     tools:context=".act.Voulnteers">
 
     <include
@@ -21,8 +21,8 @@
         android:layout_marginRight="0dp" />
 
     <RelativeLayout
-        android:layout_width="395dp"
-        android:layout_height="656dp"
+        android:layout_width="385dp"
+        android:layout_height="590dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
@@ -32,24 +32,8 @@
 
         <ImageView
             android:id="@+id/vi2"
-            android:layout_width="380dp"
-            android:layout_height="133dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="358dp"
-            app:srcCompat="@drawable/healthv" />
-
-        <ImageView
-            android:id="@+id/vi3"
-            android:layout_width="389dp"
-            android:layout_height="130dp"
+            android:layout_width="368dp"
+            android:layout_height="136dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentEnd="true"
@@ -57,14 +41,30 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="206dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginBottom="337dp"
+            app:srcCompat="@drawable/healthv" />
+
+        <ImageView
+            android:id="@+id/vi3"
+            android:layout_width="365dp"
+            android:layout_height="129dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginBottom="201dp"
             app:srcCompat="@drawable/environmentalv" />
 
         <ImageView
             android:id="@+id/vi4"
-            android:layout_width="389dp"
+            android:layout_width="368dp"
             android:layout_height="130dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
@@ -73,12 +73,31 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="7dp"
             android:layout_marginLeft="7dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="57dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="58dp"
             app:srcCompat="@drawable/educationalv" />
 
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/welcomev"
+        android:layout_width="368dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Welcome"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

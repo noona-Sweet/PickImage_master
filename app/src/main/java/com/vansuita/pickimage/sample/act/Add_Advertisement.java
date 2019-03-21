@@ -51,9 +51,10 @@ public class Add_Advertisement extends AppCompatActivity {
 
         toool = findViewById(R.id.toolbar);
 
-
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle( "New Advertisement" );
+        actionBar.setTitle( "BUNYAN" );
+
+
 
 
         //create database
@@ -258,24 +259,5 @@ public class Add_Advertisement extends AppCompatActivity {
         }
         super.onActivityResult( requestCode, resultCode, data );
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 

@@ -20,6 +20,7 @@ public class Login extends AppCompatActivity {
     EditText a,b;
     Spinner logs;
     TextView forget;
+    public static final String EXTRA_TEXT = "com.vansuita.pickimage.sample.act.EXTRA_TEXT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class Login extends AppCompatActivity {
                                 Intent i = new Intent( Login.this,Home_Page.class );
                                 Toast mp = Toast.makeText( Login.this, "Welcome Back " + str, Toast.LENGTH_SHORT );
                                 mp.show();
+                                i.putExtra(EXTRA_TEXT,"Welcome   " +  str);
                                 startActivity( i );
                                 finish();
 
@@ -58,10 +60,9 @@ public class Login extends AppCompatActivity {
                                 Intent inte= new Intent( getApplicationContext(), Voulnteers.class );
                                 Toast mp = Toast.makeText( Login.this, "Welcome Back " + str, Toast.LENGTH_SHORT );
                                 mp.show();
+                                inte.putExtra(EXTRA_TEXT,"Welcome   " +  str);
                                 startActivity( inte );
-                            /*ints.putExtra("Title",titles);
-                            ints.putExtra("Description",desrip);
-                            ints.putExtra("Phone",phons);*/
+
                             } else {
                             Toast mp = Toast.makeText( Login.this, " User Name And Passwords Don't Match", Toast.LENGTH_SHORT );
                             mp.show();
