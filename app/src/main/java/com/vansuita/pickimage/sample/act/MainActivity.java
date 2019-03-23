@@ -14,11 +14,17 @@ import android.widget.Toast;
 
 import com.vansuita.pickimage.sample.R;
 
+import static com.vansuita.pickimage.sample.act.AppSharedPreferences.USER_TYPE;
+import static com.vansuita.pickimage.sample.act.AppSharedPreferences.U_ID;
+
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_TEXT = "com.vansuita.pickimage.sample.act.EXTRA_TEXT";
 
 
     Database_Helper helper = new Database_Helper(this);
+
+    AppSharedPreferences appSharedPreferences = new AppSharedPreferences(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -72,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                         mp.show();
                         if (chk1.isChecked()) {
                             chk2.setChecked(false);
+                            appSharedPreferences.writeString(U_ID, uname);
+                            appSharedPreferences.writeString(USER_TYPE, "org");
                             Intent c1 = new Intent(MainActivity.this, Home_Page.class);
                             c1.putExtra(EXTRA_TEXT,"Welcome   " +  uname);
                             startActivity(c1);
@@ -82,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
                         if (chk2.isChecked()) {
                             chk1.setChecked(false);
+                            appSharedPreferences.writeString(U_ID, uname);
+                            appSharedPreferences.writeString(USER_TYPE, "vol");
                             Intent c2 = new Intent(MainActivity.this, Voulnteers.class);
                             c2.putExtra(EXTRA_TEXT,"Welcome   " +  uname);
                             startActivity(c2);

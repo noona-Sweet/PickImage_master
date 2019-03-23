@@ -15,13 +15,18 @@ import com.vansuita.pickimage.sample.R;
 
 import org.w3c.dom.Text;
 
+import static com.vansuita.pickimage.sample.act.AppSharedPreferences.PARTICIPATES_COUNTER;
+
 public class Home_Page extends AppCompatActivity {
     TextView tvv1;
+    AppSharedPreferences appSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_home__page );
+
+        appSharedPreferences = new AppSharedPreferences(this);
 
         Intent intent = getIntent();
         tvv1 = (TextView)findViewById(R.id.welcomeorg);
@@ -102,6 +107,9 @@ public class Home_Page extends AppCompatActivity {
             startActivity(help);
         }
         if (id == R.id.lo) {
+            int participates_counter = appSharedPreferences.readInteger(PARTICIPATES_COUNTER);
+            appSharedPreferences.clear();
+            appSharedPreferences.writeInteger(PARTICIPATES_COUNTER, participates_counter);
             Intent loog = new Intent(Home_Page.this,Welcome.class);
             startActivity(loog);
         }

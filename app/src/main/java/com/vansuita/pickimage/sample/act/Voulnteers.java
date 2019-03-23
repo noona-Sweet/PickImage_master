@@ -13,13 +13,18 @@ import android.widget.Toast;
 
 import com.vansuita.pickimage.sample.R;
 
+import static com.vansuita.pickimage.sample.act.AppSharedPreferences.PARTICIPATES_COUNTER;
+
 public class Voulnteers extends AppCompatActivity {
     TextView welv;
+    AppSharedPreferences appSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_voulnteers );
+
+        appSharedPreferences = new AppSharedPreferences(this);
 
         Toolbar toool = (Toolbar) findViewById(R.id.toolbar);
 
@@ -85,6 +90,9 @@ public class Voulnteers extends AppCompatActivity {
             startActivity(help);
         }
         if (id == R.id.lo) {
+            int participates_counter = appSharedPreferences.readInteger(PARTICIPATES_COUNTER);
+            appSharedPreferences.clear();
+            appSharedPreferences.writeInteger(PARTICIPATES_COUNTER, participates_counter);
             Intent loog = new Intent(Voulnteers.this, Welcome.class);
             startActivity(loog);
         }

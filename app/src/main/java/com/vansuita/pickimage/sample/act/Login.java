@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import com.vansuita.pickimage.sample.R;
 
+import static com.vansuita.pickimage.sample.act.AppSharedPreferences.USER_TYPE;
+import static com.vansuita.pickimage.sample.act.AppSharedPreferences.U_ID;
+
 public class Login extends AppCompatActivity {
     Database_Helper helper;
     Button btnlog;
@@ -22,12 +25,15 @@ public class Login extends AppCompatActivity {
     TextView forget;
     public static final String EXTRA_TEXT = "com.vansuita.pickimage.sample.act.EXTRA_TEXT";
 
+    AppSharedPreferences appSharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login );
 
         helper = new Database_Helper( this );
+        appSharedPreferences = new AppSharedPreferences(this);
         logs = (Spinner) findViewById( R.id.spinlog );
         btnlog = (Button) findViewById( R.id.logiin );
         forget = (TextView)findViewById( R.id.forgetpass );
@@ -48,6 +54,8 @@ public class Login extends AppCompatActivity {
                             String password = helper.searchpass( str );
                             if (pss.equals( password ) && (position == 0) && helper.getUserType(str).equals("org")) {
 
+                                appSharedPreferences.writeString(U_ID, str);
+                                appSharedPreferences.writeString(USER_TYPE, "org");
                                 Intent i = new Intent( Login.this,Home_Page.class );
                                 Toast mp = Toast.makeText( Login.this, "Welcome Back " + str, Toast.LENGTH_SHORT );
                                 mp.show();
@@ -57,6 +65,8 @@ public class Login extends AppCompatActivity {
 
                             }else if (pss.equals( password ) && (position == 1) && helper.getUserType(str).equals("vol")){
 
+                                appSharedPreferences.writeString(U_ID, str);
+                                appSharedPreferences.writeString(USER_TYPE, "vol");
                                 Intent inte= new Intent( getApplicationContext(), Voulnteers.class );
                                 Toast mp = Toast.makeText( Login.this, "Welcome Back " + str, Toast.LENGTH_SHORT );
                                 mp.show();

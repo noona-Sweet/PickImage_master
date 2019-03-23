@@ -17,6 +17,9 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static com.vansuita.pickimage.sample.act.AppSharedPreferences.PARTICIPATES_COUNTER;
+
 class HealthAdapter extends BaseAdapter {
 
 
@@ -24,6 +27,7 @@ class HealthAdapter extends BaseAdapter {
    private int layout;
    private ArrayList<AdvertisV>advertislist;
 
+   AppSharedPreferences appSharedPreferences;
 
    public HealthAdapter(Context context, int layout, ArrayList<AdvertisV> advertislist) {
       this.context = context;
@@ -47,7 +51,7 @@ class HealthAdapter extends BaseAdapter {
 
    public class ViewHolder{
       ImageView image1,shows,participate,accept,recommend;
-      TextView titles,descriptions,phones;
+      TextView titles,descriptions,phones,counts;
    }
 
    @Override
@@ -65,6 +69,8 @@ class HealthAdapter extends BaseAdapter {
          holder.phones = row.findViewById( R.id.phone2 );
          holder.image1 = row.findViewById( R.id.imgiicon );
          holder.shows = row.findViewById( R.id.viewicon );
+         holder.counts = row.findViewById(R.id.counts);
+         holder.participate = row.findViewById(R.id.particon);
          row.setTag( holder );
       } else {
          holder  = (HealthAdapter.ViewHolder)row.getTag();
@@ -74,6 +80,17 @@ class HealthAdapter extends BaseAdapter {
       holder.titles.setText( model.getTitle());
       holder.descriptions.setText( model.getDecription() );
       holder.phones.setText( model.getPhones() );
+
+      appSharedPreferences = new AppSharedPreferences(context);
+       final ViewHolder finalHolder = holder;
+       holder.participate.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              int participates_counter = appSharedPreferences.readInteger(PARTICIPATES_COUNTER) + 1;
+              appSharedPreferences.writeInteger(PARTICIPATES_COUNTER, participates_counter);
+              finalHolder.counts.setText(participates_counter);
+          }
+      });
 
       byte[]recordimage = model.getImage();
       Bitmap bitmap= BitmapFactory.decodeByteArray( recordimage,0,recordimage.length );
