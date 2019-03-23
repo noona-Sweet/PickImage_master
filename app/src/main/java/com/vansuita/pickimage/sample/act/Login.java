@@ -46,7 +46,7 @@ public class Login extends AppCompatActivity {
                             String pss = b.getText().toString();
 
                             String password = helper.searchpass( str );
-                            if (pss.equals( password ) && (position == 0)) {
+                            if (pss.equals( password ) && (position == 0) && helper.getUserType(str).equals("org")) {
 
                                 Intent i = new Intent( Login.this,Home_Page.class );
                                 Toast mp = Toast.makeText( Login.this, "Welcome Back " + str, Toast.LENGTH_SHORT );
@@ -55,7 +55,7 @@ public class Login extends AppCompatActivity {
                                 startActivity( i );
                                 finish();
 
-                            }else if (pss.equals( password ) && (position == 1)){
+                            }else if (pss.equals( password ) && (position == 1) && helper.getUserType(str).equals("vol")){
 
                                 Intent inte= new Intent( getApplicationContext(), Voulnteers.class );
                                 Toast mp = Toast.makeText( Login.this, "Welcome Back " + str, Toast.LENGTH_SHORT );
@@ -64,7 +64,7 @@ public class Login extends AppCompatActivity {
                                 startActivity( inte );
 
                             } else {
-                            Toast mp = Toast.makeText( Login.this, " User Name And Passwords Don't Match", Toast.LENGTH_SHORT );
+                            Toast mp = Toast.makeText( Login.this, " User Name And Passwords Don't Match or user type is wrong", Toast.LENGTH_LONG );
                             mp.show();
                         }
                     }

@@ -3,7 +3,7 @@ package com.vansuita.pickimage.sample.act;
 public  class Contact {
 
 
-    String uname, email, phone, password,cpass;
+    String uname, email, phone, password,cpass, userType;
 
 
     public void setUname(String uname)
@@ -51,5 +51,11 @@ public  class Contact {
         return this.cpass;
     }
 
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+    public String getUserType() {
+        return this.userType;
+    }
 
 }

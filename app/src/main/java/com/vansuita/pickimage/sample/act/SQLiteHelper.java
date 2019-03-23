@@ -30,7 +30,7 @@ public void insertData(String title, String description, String phone, byte[] im
         SQLiteDatabase database = this.getWritableDatabase();
         //query to insert data in db table
 
-    String sql = "INSERT INTO RECORD VALUES(NULL,?,?,?,?,?)";
+    String sql = "INSERT INTO RECORD VALUES(null,?,?,?,?,?)";
         //record is table name and created in main activity
 
         SQLiteStatement statement = database.compileStatement( sql );

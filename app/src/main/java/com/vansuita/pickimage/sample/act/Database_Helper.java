@@ -21,6 +21,7 @@ public class Database_Helper extends SQLiteOpenHelper {
     private static final String COLUMN_PHONE = "phone";
     private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_CONFIRM = "confirm";
+    private static final String COLUMN_USER_TYPE = "user_type";
 
 
 
@@ -43,7 +44,7 @@ public class Database_Helper extends SQLiteOpenHelper {
     private static final String column_phone = "phone";
 
 
-    private static final String Contacts = " create table " + TABLE_NAME + "  ( id integer primary key not null," + "uname text not null," + " email text not null," + " phone integer not null," + " password text not null," + " confirm text not null );";
+    private static final String Contacts = " create table " + TABLE_NAME + "  ( id integer primary key not null," + "uname text not null," + " email text not null," + " phone integer not null," + " password text not null," + " confirm text not null," + COLUMN_USER_TYPE + " text not null);";
 
     private static final String updates = "create table " + TAble_NAme + "( id integer primary key not null," + "username text not null," + " emaiil text not null," + "phonee text not null," + "userpassword text not null," + "password text not null);";
 
@@ -91,6 +92,7 @@ public class Database_Helper extends SQLiteOpenHelper {
         v.put( COLUMN_PHONE, c.getPhone() );
         v.put( COLUMN_PASSWORD, c.getPassword() );
         v.put( COLUMN_CONFIRM, c.getCpass() );
+        v.put(COLUMN_USER_TYPE, c.getUserType());
 
         db.insert( TABLE_NAME, null, v );
 
@@ -144,6 +146,22 @@ public class Database_Helper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return b;
+    }
+
+    public String getUserType(String str) {
+        db = this.getReadableDatabase();
+        String query = "select " + COLUMN_USER_TYPE + " from " + TABLE_NAME + " where " + COLUMN_NAME + " = ?";
+        Cursor cursor = db.rawQuery( query, new String[] {str} );
+        String a;
+        a = "not found";
+        if (cursor.moveToFirst()) {
+            do {
+                    a = cursor.getString( 0 );
+                    break;
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return a;
     }
 
     public void insertadvertisement(Advertis a) {

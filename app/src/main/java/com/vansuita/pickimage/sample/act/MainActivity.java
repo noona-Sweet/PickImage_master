@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -44,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                    if (!upass.equals(ucpass)) {
+                    if (TextUtils.isEmpty(uname) || uemail.isEmpty() || ucall.isEmpty() || (!chk1.isChecked() && !chk2.isChecked()) || !upass.equals(ucpass)) {
                         //pop up message
-                        Toast pass = Toast.makeText(MainActivity.this, "Passwords don't match", Toast.LENGTH_SHORT);
+                        Toast pass = Toast.makeText(MainActivity.this, "One of fields is/are empty or passwords don't match", Toast.LENGTH_LONG);
                         pass.show();
                     } else {
                         //enter the data inside the database.
@@ -56,24 +58,35 @@ public class MainActivity extends AppCompatActivity {
                         c.setPhone(ucall);
                         c.setPassword(upass);
                         c.setCpass(ucpass);
+                        if (chk1.isChecked()) {
+                            chk2.setChecked(false);
+                            c.setUserType("org");
+                        } else if (chk2.isChecked()) {
+                            chk1.setChecked(false);
+                            c.setUserType("vol");
+                        }
 
                         helper.insertContact( c );
 
                         Toast mp = Toast.makeText( MainActivity.this, "Welcome  "+uname, Toast.LENGTH_SHORT );
                         mp.show();
                         if (chk1.isChecked()) {
+                            chk2.setChecked(false);
                             Intent c1 = new Intent(MainActivity.this, Home_Page.class);
                             c1.putExtra(EXTRA_TEXT,"Welcome   " +  uname);
                             startActivity(c1);
                         } else {
                             Toast.makeText(MainActivity.this, "Please Choose Option", Toast.LENGTH_SHORT).show();
-                            if (chk2.isChecked()) {
-                                Intent c2 = new Intent(MainActivity.this, Voulnteers.class);
-                                c2.putExtra(EXTRA_TEXT,"Welcome   " +  uname);
-                                startActivity(c2);
-                            } else {
-                                Toast.makeText(MainActivity.this, "Please Choose Option", Toast.LENGTH_SHORT).show();
-                            }
+
+                        }
+
+                        if (chk2.isChecked()) {
+                            chk1.setChecked(false);
+                            Intent c2 = new Intent(MainActivity.this, Voulnteers.class);
+                            c2.putExtra(EXTRA_TEXT,"Welcome   " +  uname);
+                            startActivity(c2);
+                        } else {
+                            Toast.makeText(MainActivity.this, "Please Choose Option", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -82,6 +95,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        chk1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (compoundButton.isChecked()) {
+                    chk2.setChecked(false);
+                }
+            }
+        });
+
+        chk2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (compoundButton.isChecked()) {
+                    chk1.setChecked(false);
+                }
+            }
+        });
 
     }
 
