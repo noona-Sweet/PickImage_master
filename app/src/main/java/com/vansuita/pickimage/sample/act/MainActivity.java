@@ -23,12 +23,14 @@ public class MainActivity extends AppCompatActivity {
 
     Database_Helper helper = new Database_Helper(this);
 
-    AppSharedPreferences appSharedPreferences = new AppSharedPreferences(this);
+    AppSharedPreferences appSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
+
+        appSharedPreferences = new AppSharedPreferences(this);
 
         final CheckBox chk1 = (CheckBox) findViewById(R.id.org);
         final CheckBox chk2 = (CheckBox) findViewById(R.id.vol);
