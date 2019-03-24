@@ -25,11 +25,11 @@ class HealthAdapter extends BaseAdapter {
 
    private Context context;
    private int layout;
-   private ArrayList<AdvertisV>advertislist;
+   private ArrayList<Advertis>advertislist;
 
    AppSharedPreferences appSharedPreferences;
 
-   public HealthAdapter(Context context, int layout, ArrayList<AdvertisV> advertislist) {
+   public HealthAdapter(Context context, int layout, ArrayList<Advertis> advertislist) {
       this.context = context;
       this.layout = layout;
       this.advertislist = advertislist;
@@ -50,7 +50,7 @@ class HealthAdapter extends BaseAdapter {
    }
 
    public class ViewHolder{
-      ImageView image1,shows,participate,accept,recommend;
+      ImageView image1,shows,participate,accept;
       TextView titles,descriptions,phones,counts;
    }
 
@@ -75,11 +75,11 @@ class HealthAdapter extends BaseAdapter {
       } else {
          holder  = (HealthAdapter.ViewHolder)row.getTag();
       }
-      AdvertisV model = advertislist.get(i);
+      Advertis model = advertislist.get(i);
 
       holder.titles.setText( model.getTitle());
-      holder.descriptions.setText( model.getDecription() );
-      holder.phones.setText( model.getPhones() );
+      holder.descriptions.setText( model.getDecription());
+      holder.phones.setText( model.getPhones());
 
       appSharedPreferences = new AppSharedPreferences(context);
        final ViewHolder finalHolder = holder;
@@ -88,9 +88,18 @@ class HealthAdapter extends BaseAdapter {
           public void onClick(View view) {
               int participates_counter = appSharedPreferences.readInteger(PARTICIPATES_COUNTER) + 1;
               appSharedPreferences.writeInteger(PARTICIPATES_COUNTER, participates_counter);
-              finalHolder.counts.setText(participates_counter);
+              finalHolder.counts.setText(String.valueOf(participates_counter));
           }
       });
+       holder.shows.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+
+
+
+
+           }
+       });
 
       byte[]recordimage = model.getImage();
       Bitmap bitmap= BitmapFactory.decodeByteArray( recordimage,0,recordimage.length );
